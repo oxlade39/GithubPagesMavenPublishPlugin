@@ -1,5 +1,3 @@
-package org.doxla.sbt.ostrich.dist
-
 import sbt._
 import sbt.Keys._
 import xml.PrettyPrinter
@@ -8,7 +6,9 @@ import xml.PrettyPrinter
 /**
  * @author oxladed
  */
-object GithubPagesMavenPublish extends Plugin {
+object GithubPagesMavenPublish extends AutoPlugin {
+  
+  object autoImport {
   val githubPagesCheckoutDir: SettingKey[File] = SettingKey[File]("gh-pages-dir",
     "The location of checkout out gh-pages to use for deploying to")
 
@@ -38,6 +38,12 @@ object GithubPagesMavenPublish extends Plugin {
         originalPublishTask
     }
   ).asInstanceOf[Seq[Project.Setting[_]]]
+  }
+
+  import autoImport._
+
+  // This plugin is automatically enabled for projects which are JvmPlugin.
+  override def trigger = allRequirements
 
   object IndexMaker {
     def apply(root: File) {
