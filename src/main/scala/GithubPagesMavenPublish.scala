@@ -6,9 +6,8 @@ import xml.PrettyPrinter
 /**
  * @author oxladed
  */
-object GithubPagesMavenPublish extends AutoPlugin {
+object GithubPagesMavenPublish extends Plugin {
   
-  object autoImport {
   val githubPagesCheckoutDir: SettingKey[File] = SettingKey[File]("gh-pages-dir",
     "The location of checkout out gh-pages to use for deploying to")
 
@@ -38,13 +37,6 @@ object GithubPagesMavenPublish extends AutoPlugin {
         originalPublishTask
     }
   ).asInstanceOf[Seq[Project.Setting[_]]]
-  }
-
-  import autoImport._
-  override def requires = sbt.plugins.JvmPlugin
-  
-  // This plugin is automatically enabled for projects which are JvmPlugin.
-  override def trigger = allRequirements
 
   object IndexMaker {
     def apply(root: File) {
