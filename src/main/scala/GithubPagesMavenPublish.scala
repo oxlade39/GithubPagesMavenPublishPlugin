@@ -41,7 +41,8 @@ object GithubPagesMavenPublish extends AutoPlugin {
   }
 
   import autoImport._
-
+  override def requires = sbt.plugins.JvmPlugin
+  
   // This plugin is automatically enabled for projects which are JvmPlugin.
   override def trigger = allRequirements
 

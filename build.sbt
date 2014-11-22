@@ -6,10 +6,10 @@ name := "github-maven-publish-plugin"
 
 organization := "com.github.oxlade39"
 
-version := "2.1"
+version := "2.3"
 
 scalaVersion := "2.10.4"
 
-githubPagesCheckoutDir := Path.userHome / "proj" / "oxlade39.github.com" / "_site" / "maven"
+githubPagesCheckoutDir := Path.userHome / "proj" / "oxlade39.github.com" / "maven"
 
 publishMavenStyle := true
